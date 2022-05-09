@@ -18,6 +18,7 @@ void setup(){
   pinMode(LED2, OUTPUT);
   pinMode(LED3, OUTPUT);
 
+  // ตั้งเวลาทำงานทุกๆ 1 วินาที ให้ LED1 & LED2 ติด-ดับ สลับกัน
   timer_led1_led2.setInterval(1000,[](){
     static bool state;
 
@@ -26,6 +27,7 @@ void setup(){
     digitalWrite(LED2, !state);
   });
 
+  // ตั้งเวลาทำงานทุกๆ 300ms ให้ LED3 กระพริบ
   timer_led3.setInterval(300,[](){
     static bool state;
     digitalWrite(LED3,  state = !state);
