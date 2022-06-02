@@ -2,9 +2,9 @@
 #define __BLYNKGO_DUINO_H__
 
 #include <Arduino.h>
-#include "src/GTimerDuino.h"
-#include "src/HWButton.h"
-#include "src/CircularBuffer.h"
+#include "GTimerDuino.h"
+#include "HWButton.h"
+#include "CircularBuffer.h"
 #include <EEPROM.h>
 
 #if defined(__AVR_ATmega328P__)
@@ -22,9 +22,7 @@
 #endif
 
 #if defined ESP8266 || defined ESP32
-  #include "src/SoftwareSerial.h"
+  #include "SoftwareSerial.h"
 #endif
-
-
 
 #endif // __BLYNKGO_DUINO_H__
