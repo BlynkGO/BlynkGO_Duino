@@ -3,6 +3,8 @@
 #ifndef _HWBUTTON_H__
 #define _HWBUTTON_H__
 
+#define HWBUTTON_VERSION   "1.0.0"
+
 /////////////////////////////////////////////////////////////////
 
 #include "Arduino.h"
@@ -25,8 +27,12 @@
 class HWButton {
   private:
     byte pin;
+    uint8_t _pinmode=INPUT_PULLUP;
     int prev_state;
     int state = HIGH;
+    uint8_t STATE_PRESSED = LOW;
+    uint8_t STATE_RELEASED = HIGH;
+    bool first_input_mode;
     byte click_count = 0;
     unsigned int last_click_type = 0;
     unsigned long click_ms;
@@ -68,8 +74,8 @@ class HWButton {
     void setLongPressed(CallbackFunction f);      // BlynkGO
 
     // BlynkGO
-    inline void gpio(byte attachTo, byte buttonMode = INPUT_PULLUP, unsigned int debounceTimeout = DEBOUNCE_MS)
-            {  pin = attachTo; setDebounceTime(debounceTimeout); pinMode(attachTo, buttonMode);  Serial.println("button init");}
+    void gpio(byte attachTo, byte buttonMode = INPUT_PULLUP, unsigned int debounceTimeout = DEBOUNCE_MS);
+   
     inline uint8_t gpio()                                       { return pin;               }
     inline void onValueChanged(CallbackFunction f)              { setChangedHandler(f);     }
     inline void onPressed(CallbackFunction f)                   { setPressedHandler(f);     }
