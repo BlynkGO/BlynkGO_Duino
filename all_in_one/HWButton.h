@@ -59,7 +59,8 @@ class HWButton {
     void* _user_data = NULL;
   public:
     HWButton(){pin = -1;}
-    HWButton(byte attachTo, byte buttonMode = INPUT_PULLUP, unsigned int debounceTimeout = DEBOUNCE_MS);
+    HWButton(byte attachTo);
+    HWButton(byte attachTo, byte buttonMode, unsigned int debounceTimeout = DEBOUNCE_MS);
     void setDebounceTime(unsigned int ms);
     
     void setChangedHandler(CallbackFunction f);
@@ -112,6 +113,7 @@ class HWButton {
     unsigned int getClickType();
     uint8_t getAttachPin(){return pin;}
     bool operator==(HWButton &rhs);
+    HWButton& operator =(uint8_t pin);
 
     void loop();
     inline void run()        { loop(); }

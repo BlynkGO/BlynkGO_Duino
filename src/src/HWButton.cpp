@@ -4,6 +4,10 @@
 
 /////////////////////////////////////////////////////////////////
 
+HWButton::HWButton(byte attachTo){
+  this->gpio(attachTo, INPUT_PULLUP, DEBOUNCE_MS);
+}
+
 HWButton::HWButton(byte attachTo, byte buttonMode /*= INPUT_PULLUP*/, unsigned int debounceTimeout /*= DEBOUNCE_MS*/) {
   this->gpio(attachTo, buttonMode, debounceTimeout);
   //  pin = attachTo;
@@ -35,6 +39,10 @@ bool HWButton::operator==(HWButton &rhs) {
   return (this == &rhs);
 }
 
+HWButton& HWButton::operator =(uint8_t pin){
+  this->gpio(pin, INPUT_PULLUP, DEBOUNCE_MS);
+  return *this;
+}
 /////////////////////////////////////////////////////////////////
 
 void HWButton::setDebounceTime(unsigned int ms) {
