@@ -76,8 +76,10 @@ public:
     int setTimeout(unsigned long d, timer_callback_p f, void* p);
 
     // BlynkGO
-    inline int setOnce(unsigned long d, timer_callback f)               { return setTimeout(d, f); }
+    inline int setOnce(unsigned long d, timer_callback f)               { return setTimeout(d, f);    }
     inline int setOnce(unsigned long d, timer_callback_p f, void* p)    { return setTimeout(d, f, p); }
+    inline int delay(unsigned long d, timer_callback f)                 { return setOnce(d,f);        } 
+    inline int delay(unsigned long d, timer_callback_p f, void* p)      { return setOnce(d,f,p);      } 
 
     // Timer will call function 'f' every 'd' milliseconds 'n' times
     // returns the timer number (numTimer) on success or
