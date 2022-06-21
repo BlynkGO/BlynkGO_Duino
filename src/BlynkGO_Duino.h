@@ -21,9 +21,9 @@
   #define MCU_TYPE    "Unknown"
 #endif
 
-#if defined ESP8266 || defined ESP32
-  #include "src/SoftwareSerial.h"
-#endif
+// #if defined ESP8266 || defined ESP32
+//   #include "src/SoftwareSerial.h"
+// #endif
 
 
 
