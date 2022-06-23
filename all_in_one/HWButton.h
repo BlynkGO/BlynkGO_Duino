@@ -1,9 +1,13 @@
+/************************************************************
+ * BlynkGO's HWButton
+ *   Support For any MCU on Arduino IDE 
+ ************************************************************/
 #pragma once
 
 #ifndef _HWBUTTON_H__
 #define _HWBUTTON_H__
 
-#define HWBUTTON_VERSION   "1.0.0"
+#define HWBUTTON_VERSION   "1.0.1"
 
 /////////////////////////////////////////////////////////////////
 
@@ -88,6 +92,7 @@ class HWButton {
     inline void onTripleClicked(CallbackFunction f)             { setTripleClickHandler(f); }
     inline void onPressing(CallbackFunction f)                  { setPressingHandler(f);    }
     inline void onLongPressed(CallbackFunction f)               { setLongPressed(f);        }
+    inline void onLongPressed(unsigned int long_ms, CallbackFunction f)  { longpressed_time_ms = long_ms; setLongPressed(f);        }
 
     inline void reset(){
       onValueChanged(NULL);
