@@ -36,7 +36,7 @@ void setup(){
 }
 
 void loop(){
-  timer_led1_led2.run();
-  timer_led3.run();
+  timer_led1_led2.loop();
+  timer_led3.loop();
 }
 
