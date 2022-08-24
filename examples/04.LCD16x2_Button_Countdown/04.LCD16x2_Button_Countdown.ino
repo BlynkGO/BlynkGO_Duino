@@ -19,14 +19,20 @@ void setup() {
   lcd.print("MM:SS");
   
   for(uint8_t i=0; i< 3; i++){
-    button[i].onPressed([](HWButton*btn){     // เมื่อปุ่มแต่ละตัว ถูกกด
-      uint8_t i= btn - &button[0];            // คำนวณว่า ปุ่มที่กดมาเป็น ปุ่มลำดับ i ไหน ( 0,1,2 ) ใน array ปุ่ม
-
+    button[i].onClicked([](HWButton*btn){     // เมื่อปุ่มแต่ละตัว ถูกกด
+      static uint8_t i;
       static int secs;
+      
+      i = btn - &button[0];            // คำนวณว่า ปุ่มที่กดมาเป็น ปุ่มลำดับ i ไหน ( 0,1,2 ) ใน array ปุ่ม
       secs = countdown[i];                    // วินาทีสำหรับ countdown เริ่มต้น
 
       Serial.println("[Start]");
-      timer.setInterval(1000,[secs](){        // ตั้งเวลาทำงานทุกๆวินาที      
+      // ก่อน start ถ้าจะให้ทำอะไร ให้วางตรงนี้
+      // โดย เช็ค if ค่า i ไหน ได้ตามต้องการ
+      // if( i==0)       {....}
+      // else if (i==1 ) {....}
+      // else if (i==2 ) {....}
+      timer.setInterval(1000,[secs,i](){        // ตั้งเวลาทำงานทุกๆวินาที      
         int m = secs/60, s = secs%60;
         lcd   .setCursor(6, 1);
         lcd   .println( String( m<10? "0":"" )+ String(m) + ":" + String(s<10? "0":"")+String(s) );
@@ -36,9 +42,15 @@ void setup() {
           secs--;                             // ลดค่า countdown ลง ที่ละ 1 วินาที
         }else{
           Serial.println("[Stop]");
+          // หลัง stop ถ้าจะให้ทำอะไร ให้าางตรงนี้
+          // โดย เช็ค if ค่า i ไหน ได้ตามต้องการ
+          // if( i==0)       {....}
+          // else if (i==1 ) {....}
+          // else if (i==2 ) {....}
+                    
           timer.del();                        // หาก countdown นับหมดแล้วให้ยกเลิกตัวตั้งเวลาทิ้ง
         }
-
+        
       }); // timer.setInterval(...)
     }); // button[i].onClicked(...)
   }  // for(...)
@@ -50,4 +62,3 @@ void loop() {
   }
   timer .loop();
 }
-
