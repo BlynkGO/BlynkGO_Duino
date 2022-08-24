@@ -32,7 +32,7 @@ void setup() {
       // if( i==0)       {....}
       // else if (i==1 ) {....}
       // else if (i==2 ) {....}
-      timer.setInterval(1000,[secs,i](){        // ตั้งเวลาทำงานทุกๆวินาที      
+      timer.setInterval(1000,[secs,i](){      // ตั้งเวลาทำงานทุกๆวินาที      
         int m = secs/60, s = secs%60;
         lcd   .setCursor(6, 1);
         lcd   .println( String( m<10? "0":"" )+ String(m) + ":" + String(s<10? "0":"")+String(s) );
