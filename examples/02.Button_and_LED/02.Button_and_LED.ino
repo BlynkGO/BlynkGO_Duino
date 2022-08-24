@@ -22,8 +22,7 @@ void setup() {
     if( is_blinking == false) {
       is_blinking = true;
       timer.setInterval(500,[](){               // ตั้ง timer ทำงานทุกๆ 500ms
-        static bool state;
-        digitalWrite(LED_PIN, state = !state);  // สลับการกระพริบ
+        digitalWrite(LED_PIN, !digitalRead(LED_PIN));  // สลับการกระพริบ
       });
     }else{
     // หากกระพริบอยู่ ให้ยกเลิก ตัวตั้งเวลาที่ทำ LED กระพริบ
@@ -37,6 +36,6 @@ void setup() {
 
 
 void loop() {
-  button.run();
-  timer.run();
+  button.loop();
+  timer.loop();
 }
