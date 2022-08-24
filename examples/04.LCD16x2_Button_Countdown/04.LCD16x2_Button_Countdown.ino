@@ -23,7 +23,7 @@ void setup() {
       static uint8_t i;
       static int secs;
       
-      i = btn - &button[0];            // คำนวณว่า ปุ่มที่กดมาเป็น ปุ่มลำดับ i ไหน ( 0,1,2 ) ใน array ปุ่ม
+      i = btn - &button[0];                   // คำนวณว่า ปุ่มที่กดมาเป็น ปุ่มลำดับ i ไหน ( 0,1,2 ) ใน array ปุ่ม
       secs = countdown[i];                    // วินาทีสำหรับ countdown เริ่มต้น
 
       Serial.println("[Start]");
