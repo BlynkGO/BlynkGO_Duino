@@ -23,7 +23,7 @@ void setup() {
 
 
 void loop() {
-  button.run();
-  timer.run();
+  button.loop();
+  timer.loop();
 }
 
