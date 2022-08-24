@@ -38,9 +38,10 @@ void setup() {
           Serial.println("[Stop]");
           timer.del();                        // หาก countdown นับหมดแล้วให้ยกเลิกตัวตั้งเวลาทิ้ง
         }
-      });
-    });
-  }
+        
+      }); // timer.setInterval(...)
+    }); // button[i].onClicked(...)
+  }  // for(...)
 }
 
 void loop() {
