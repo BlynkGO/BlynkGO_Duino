@@ -19,7 +19,7 @@ void setup() {
   lcd.print("MM:SS");
   
   for(uint8_t i=0; i< 3; i++){
-    button[i].onClicked([](HWButton*btn){     // เมื่อปุ่มแต่ละตัว ถูกกด
+    button[i].onPressed([](HWButton*btn){     // เมื่อปุ่มแต่ละตัว ถูกกด
       static uint8_t i;
       static int secs;
       
