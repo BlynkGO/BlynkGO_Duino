@@ -20,17 +20,13 @@ void setup(){
 
   // ตั้งเวลาทำงานทุกๆ 1 วินาที ให้ LED1 & LED2 ติด-ดับ สลับกัน
   timer_led1_led2.setInterval(1000,[](){
-    static bool state;
-
-    state = !state;
-    digitalWrite(LED1,  state);
-    digitalWrite(LED2, !state);
+    digitalWrite(LED1, !digitalRead(LED1));  // กลับสถานะเดิมของ LED1
+    digitalWrite(LED2, !digitalRead(LED1));  // LED2 ให้สถานะตรงข้ามกับสถานะ LED1 ปัจจุบัน
   });
 
   // ตั้งเวลาทำงานทุกๆ 300ms ให้ LED3 กระพริบ
   timer_led3.setInterval(300,[](){
-    static bool state;
-    digitalWrite(LED3,  state = !state);
+    digitalWrite(LED3,  !digitalRead(LED3)); // กลับสถานะเดิมของ LED3
   });
 
 }
