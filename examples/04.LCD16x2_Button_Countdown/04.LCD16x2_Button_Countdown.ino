@@ -19,7 +19,7 @@ void setup() {
   lcd.print("MM:SS");
   
   for(uint8_t i=0; i< 3; i++){
-    button[i].onClicked([](HWButton*btn){     // เมื่อปุ่มแต่ละตัว ถูกกด
+    button[i].onPressed([](HWButton*btn){     // เมื่อปุ่มแต่ละตัว ถูกกด
       uint8_t i= btn - &button[0];            // คำนวณว่า ปุ่มที่กดมาเป็น ปุ่มลำดับ i ไหน ( 0,1,2 ) ใน array ปุ่ม
 
       static int secs;
@@ -38,7 +38,7 @@ void setup() {
           Serial.println("[Stop]");
           timer.del();                        // หาก countdown นับหมดแล้วให้ยกเลิกตัวตั้งเวลาทิ้ง
         }
-        
+
       }); // timer.setInterval(...)
     }); // button[i].onClicked(...)
   }  // for(...)
