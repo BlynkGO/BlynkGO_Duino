@@ -14,7 +14,7 @@ void setup() {
 
     // อีก 2 วินาทีถัดไปให้ทำอะไรๆ
     // ใช้แทน delay(2000) แต่จะไม่ทำให้ MCU ค้างระหว่างรอทำงาน
-    timer.setOnce(2000,[](){  
+    timer.delay(2000,[](){  
       Serial.println("Hello");
     });
   });
